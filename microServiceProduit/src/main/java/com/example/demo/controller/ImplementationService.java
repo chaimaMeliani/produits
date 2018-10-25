@@ -40,4 +40,18 @@ public class ImplementationService {
 		
 	return produitRepository.findAll( PageRequest.of(0, 3));	
 	}
+	
+	@RequestMapping("/get")
+	public Produit getProduit(Long ref){
+		return produitRepository.findById(ref).orElse(null);
+	}
+	@RequestMapping("/delete")
+	public boolean delete(Long ref){
+		 produitRepository.deleteById(ref);
+		 return true;
+	}
+	@RequestMapping("/update")
+	public Produit update(Produit p){
+		return produitRepository.save(p);
+	}
 }
