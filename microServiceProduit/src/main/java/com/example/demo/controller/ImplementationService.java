@@ -40,7 +40,22 @@ public class ImplementationService {
 		
 	return produitRepository.findAll( PageRequest.of(0, 3));	
 	}
-	
+	@RequestMapping("/produitsParMC")
+	public List<Produit> getProduits(String mc){
+		return produitRepository.produitParMC(mc);
+	}
+	@RequestMapping("/produitsParMC2")
+	public Page<Produit> getProduits(String mc,int page){
+		return produitRepository.produitParMC(mc, new PageRequest(page,5));
+	}
+	@RequestMapping("/produitsParDes")
+	public List<Produit> getProduitsByDes(String mc){
+		return produitRepository.findByDesignation(mc);
+	}
+	@RequestMapping("/produitsParDes2")
+	public Page<Produit> getProduitsByDes(String mc,int page){
+		return produitRepository.findByDesignation(mc, new PageRequest(page,5));
+	}
 	@RequestMapping("/get")
 	public Produit getProduit(Long ref){
 		return produitRepository.findById(ref).orElse(null);

@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-@Document
+@Document(collection="prod")
 
 public class Produit implements Serializable {
 	@Id
